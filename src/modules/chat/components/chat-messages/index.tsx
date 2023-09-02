@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 import {
@@ -30,6 +30,9 @@ export const ChatMessages = () => {
   const { sessionSecret } = useParams();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  const prevDataRef = useRef<any>(null);
 
   const adminPassword = queryParams.get('adminPassword');
 
@@ -39,9 +42,13 @@ export const ChatMessages = () => {
     { activeSessionSecret: sessionSecret, adminPassword: adminPassword },
     {
       skip: !activeSessionSecret || !sessionSecret,
-      pollingInterval: 5000
+      pollingInterval: 5000,
     },
   );
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   useEffect(() => {
     if (data?.admin) {
@@ -50,6 +57,7 @@ export const ChatMessages = () => {
     if (data?.session) {
       updateActiveEmail(data.session.email);
     }
+    scrollToBottom();
   }, [data]);
 
   useEffect(() => {
@@ -69,6 +77,7 @@ export const ChatMessages = () => {
         {data?.session?.output && (
           <RenderChatMessages isAdmin={data.admin} session={data.session} />
         )}
+        <div ref={messagesEndRef} />
       </ChatMessagesBox>
       {isChatSelected && (
         <NotSelectedChatBox>

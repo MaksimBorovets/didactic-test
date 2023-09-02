@@ -14,6 +14,8 @@ export const SignInBox = styled.div`
   align-items: center;
   flex-direction: column;
   margin-top: 100px;
+  margin-bottom: 100px;
+  overflow: auto;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
