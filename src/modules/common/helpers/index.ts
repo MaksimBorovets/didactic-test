@@ -9,7 +9,7 @@ export function transformYouTubeUrl(inputUrl: string) {
 	  const videoId = match[1];
   
 	  // Construct the embedded video URL with autoplay
-	  const embeddedUrl = `http://www.youtube.com/embed/${videoId}?autoplay=1`;
+	  const embeddedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
   
 	  return embeddedUrl;
 	}
