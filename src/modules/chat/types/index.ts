@@ -1,9 +1,3 @@
-export interface IFetchChatBySecretHelperProps {
-  activeSessionSecret: string;
-  setMessages: React.Dispatch<React.SetStateAction<IOutput[] | undefined>>
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
-}
-
 export interface IChatsDataHelper {
   chats: {
     id: number;

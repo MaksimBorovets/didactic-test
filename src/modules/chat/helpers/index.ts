@@ -1,7 +1,6 @@
 import { startOfDay } from 'date-fns'; 
 
 import { ISession } from '../../common/types';
-import { IFetchChatBySecretHelperProps } from '../types';
 
 // ...
 
@@ -63,30 +62,4 @@ export const chatsDataHelper = (chats: ISession[] | undefined) => {
     chats7DaysAgo,
     chats30DaysAgo,
   };
-};
-
-export const fetchChatBySecret = async ({
-  activeSessionSecret,
-  setMessages,
-  setIsLoading,
-}: IFetchChatBySecretHelperProps) => {
-  setIsLoading(true);
-  const res = await fetch(
-    `${import.meta.env.VITE_SERVER_URL}session-info/${activeSessionSecret}`,
-  );
-
-  if (!res.ok) {
-    throw new Error(`Request failed with status: ${res.status}`);
-  }
-
-  try {
-    const session: ISession = await res.json();
-    setMessages(session.output);
-    setIsLoading(false);
-  } catch (jsonError) {
-    console.error('Error parsing JSON response:', jsonError);
-    setIsLoading(false);
-  } finally {
-    setIsLoading(false);
-  }
 };
