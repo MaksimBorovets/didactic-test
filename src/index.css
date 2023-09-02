@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #69f7be;
+  --color-text-main: #000000;
+  --color-primary: #ffff00;
+  --color-cyan: #87e7dd;
+  --color-hover-cyan: #5bc0be;
+  --wrapper-height: 87vh;
+  --image-max-width: 300px;
+  --image-margin: 3rem;
+  --font-family: 'HK Grotesk';
+  --font-family-header: 'HK Grotesk';
+  --button-padding: 10px 20px;
+  --button-border-radius: 10px;
+  --box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+  --loading-animation: spin 1s linear infinite;
+  --slide-in-animation: slideIn 0.3s ease-out;
+}
+
+/* @font-face {
+  font-family: var(--font-family);
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027") format("opentype");
+}
+@font-face {
+  font-family: var(--font-family);
+  font-weight: bold;
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437") format("opentype");
+} */
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background: repeating-linear-gradient(
+    45deg,
+    hsl(182, 60%, 95%) 0px,
+    hsl(182, 60%, 95%) 10px,
+    hsl(257, 60%, 95%) 10px,
+    hsl(257, 60%, 95%) 15px,
+    hsl(182, 60%, 95%) 15px,
+    hsl(182, 60%, 95%) 24.21px,
+    hsl(257, 60%, 95%) 24.21px,
+    hsl(257, 60%, 95%) 50px
+  );
+
+  background-size: 20px 20px;
+  background-position: 0 0, 50px 50px;
+  background-attachment: fixed;
+  color: var(--color-text-main);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
