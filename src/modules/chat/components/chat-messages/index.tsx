@@ -32,8 +32,6 @@ export const ChatMessages = () => {
   const queryParams = new URLSearchParams(location.search);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-  const prevDataRef = useRef<any>(null);
-
   const adminPassword = queryParams.get('adminPassword');
 
   const isChatSelected = sessionSecret === 'new-session';
